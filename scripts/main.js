@@ -1,6 +1,31 @@
 console.info("%cFunWorks site loaded successfully! Ready to grow brands.", "color: #3366cc; font-weight: bold;");
 
 document.addEventListener("DOMContentLoaded", () => {
+  // === Mobile Nav Toggle ===
+  const header = document.querySelector("header");
+  const nav = document.querySelector("nav");
+  const navToggle = document.getElementById("navToggle");
+
+  if (nav && navToggle) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    nav.addEventListener("click", (e) => {
+      if (e.target && e.target.tagName === "A") {
+        nav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        nav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
   // === Ethos Carousel ===
   const scrollContainer = document.getElementById("ethosScroll");
   const scrollLeftBtn = document.getElementById("scrollLeft");
@@ -59,11 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("Ethos scroll elements not found");
   }
 
-  // === Scroll-to-Top Button ===
-  window.onscroll = () => {
+  // === Scroll-to-Top Button + Header Scroll Effect ===
+  window.addEventListener("scroll", () => {
     const btn = document.getElementById("topBtn");
-    btn.style.display = window.scrollY > 100 ? "block" : "none";
-  };
+    if (btn) {
+      btn.style.display = window.scrollY > 100 ? "block" : "none";
+    }
+
+    if (header) {
+      if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+  });
 
   window.scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
