@@ -1,0 +1,489 @@
+:root {
+  --fun-yellow: #FEC601;
+  --fun-red: #E52C27;
+  --fun-cyan: #0DBEDC;
+  --fun-purple: #5D3A9B;
+  --fun-white: #FFFFFF;
+  --fun-black: #000000;
+  --heading-font: 'Fredoka', sans-serif;
+  --body-font: 'Fredoka', sans-serif;
+}
+
+/* === Reset & Base Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-family: var(--body-font);
+}
+
+/* === Sticky Header & Nav === */
+header, nav {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+header {
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #222;
+  color: white;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease;
+}
+
+header img {
+  height: 60px;
+  width: auto;
+}
+
+nav {
+  top: 70px;
+  background-color: var(--fun-purple);
+  transition: background-color 0.3s ease;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #003399;
+  font-weight: bold;
+}
+
+/* === Main Content Padding to Avoid Overlap === */
+main {
+  padding-top: 140px;
+  flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* === Sections === */
+section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: var(--fun-black);
+}
+
+/* === Button Style (Fix for Firefox & Brave) === */
+.button-fun {
+  display: inline-block;
+  background-color: var(--fun-yellow);
+  color: var(--fun-black);
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-fun:hover,
+.button-fun:focus {
+  background-color: var(--fun-red);
+  color: var(--fun-white);
+  outline: none;
+}
+
+/* === Hero Section Fix for Firefox & Brave === */
+.hero {
+  min-height: 100vh;
+  height: 100vh;
+  background: linear-gradient(to right, #5D3A9B, #9b5de5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1522202176984-96d2e342a9af ');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+/* === Service Cards === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  display: block;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-description {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.card-link {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 600;
+  color: var(--fun-purple);
+  margin-top: 10px;
+  display: block;
+}
+
+.service-card:hover .service-description {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.service-card:hover .card-link {
+  opacity: 1;
+}
+
+/* === Ethos Carousel === */
+.ethos-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.ethos-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 10px;
+  max-width: 80vw;
+  flex-grow: 1;
+  scrollbar-width: none;
+}
+
+.ethos-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.ethos-card {
+  flex: 0 0 auto;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.ethos-card i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.ethos-card:nth-child(1) {
+  background-color: #f9c74f;
+}
+.ethos-card:nth-child(2) {
+  background-color: #90be6d;
+}
+.ethos-card:nth-child(3) {
+  background-color: #577590;
+}
+.ethos-card:nth-child(4) {
+  background-color: #f94144;
+}
+.ethos-card:nth-child(5) {
+  background-color: #9b5de5;
+}
+
+.ethos-card h3,
+.ethos-card p {
+  color: white;
+  font-weight: 600;
+}
+
+.ethos-card:hover {
+  transform: translateY(-6px);
+}
+
+.ethos-card .card-link {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--fun-white);
+}
+
+.ethos-card:hover .card-link {
+  opacity: 1;
+}
+
+/* === Testimonials === */
+.testimonial-carousel {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  font-family: var(--body-font);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-card strong {
+  font-weight: 600;
+}
+
+/* === Contact Form Styles === */
+#contactForm {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contactForm label {
+  font-weight: 600;
+  margin-top: 10px;
+  font-family: var(--body-font);
+}
+
+#contactForm input,
+#contactForm textarea,
+#contactForm select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#contactForm button[type="submit"] {
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 30px;
+  background-color: var(--fun-purple);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: var(--body-font);
+}
+
+#contactForm button[type="submit"]:hover {
+  background-color: #003399;
+}
+
+.form-status {
+  margin-top: 15px;
+  font-style: italic;
+  font-family: var(--body-font);
+}
+
+.contact-info {
+  max-width: 600px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.contact-info h3,
+.contact-info p {
+  font-family: var(--body-font);
+}
+
+.contact-info i {
+  margin-right: 10px;
+  color: var(--fun-purple);
+}
+
+/* === Footer === */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--fun-yellow);
+}
+
+/* === Scroll-to-Top Button === */
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: var(--fun-purple);
+  color: white;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  font-family: var(--body-font);
+}
+
+#topBtn:hover {
+  background-color: #003399;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .button-fun {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+
+  #contactForm {
+    gap: 10px;
+  }
+
+  #contactForm input,
+  #contactForm textarea,
+  #contactForm select {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  #contactForm button[type="submit"] {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}

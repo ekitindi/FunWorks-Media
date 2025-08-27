@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethos - FunWorks</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="images/Funworks.jpeg" alt="FunWorks Media Consulting Logo" />
+    <h1>FunWorks</h1>
+    <p>Your Brand’s New Best Friend</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="ethos.html" class="active">Ethos</a></li>
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="contacts.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up" style="background: linear-gradient(to right, #f9c74f, #f94144);">
+    <div class="hero-content">
+      <h1>Our Ethos</h1>
+      <p>Learn about the core values that drive everything we do at FunWorks.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <section id="ethos-details" data-aos="fade-up">
+      <h2>Our Values</h2>
+      <p>We operate by a set of core values that guide every decision, interaction, and strategy we craft. These principles ensure we deliver work that’s not only effective but also meaningful and enjoyable.</p>
+      <div class="ethos-wrapper">
+        <button id="scrollLeft" class="scroll-btn" aria-label="Scroll ethos cards left">←</button>
+        <div class="ethos-scroll" id="ethosScroll">
+          <!-- Ethos Cards -->
+          <div class="ethos-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Professional</h3>
+            <p>We deliver with polish, punctuality, and pride.</p>
+          </div>
+          <div class="ethos-card">
+            <i class="fas fa-users"></i>
+            <h3>Collaborative</h3>
+            <p>We grow better by working together and valuing partnerships.</p>
+          </div>
+          <!-- Add more ethos cards as needed -->
+        </div>
+        <button id="scrollRight" class="scroll-btn" aria-label="Scroll ethos cards right">→</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FunWorks Media Consulting | <a href="mailto:info@funworksmedia.com">info@funworksmedia.com</a></p>
+  </footer>
+
+  <!-- Scroll-to-Top Button -->
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
+
+  <!-- Scripts -->
+  <script defer src="../scripts/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>
+</html>

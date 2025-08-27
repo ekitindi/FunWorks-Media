@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - FunWorks</title>
+  <meta name="description" content="Get in touch with FunWorks Media Consulting for expert sales, marketing and branding support." />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka :wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css " />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="images/Funworks.jpeg" alt="FunWorks Media Consulting Logo" />
+    <h1>FunWorks</h1>
+    <p>Your Brand’s New Best Friend</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="ethos.html">Ethos</a></li>
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="contacts.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" data-aos="fade-up">
+      <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>Ready to grow your brand? Get in touch today!</p>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-details" data-aos="fade-up">
+      <h2>Send Us a Message</h2>
+      <p>We’d love to hear from you — whether you're looking for help with one of our services or just want to say hello.</p>
+
+      <form id="contactForm" novalidate>
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+        <label for="email">Your Email *</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+
+        <label for="phone">Phone Number (Optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" pattern="^\+?[0-9\s\-()]{7,}$" />
+
+        <label for="service">Service Required *</label>
+        <select id="service" name="service" required>
+          <option value="">-- Select a Service --</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="Media Buying">Media Buying</option>
+          <option value="Web Design">Web Design</option>
+          <option value="PR & Media Relations">PR & Media Relations</option>
+          <option value="Brand Strategy">Brand Strategy</option>
+          <option value="Event Management">Event Management</option>
+          <option value="Sales & Distribution">Sales & Distribution</option>
+          <option value="BTL Marketing">BTL Marketing</option>
+          <option value="General Enquiry">General Enquiry</option>
+        </select>
+
+        <label for="message">Your Message *</label>
+        <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea>
+
+        <button type="submit" class="button-fun">Send Message</button>
+        <p id="formStatus" class="form-status"></p>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Prefer to call us?</h3>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+254123456789">+254 123 456 789</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@funworksmedia.com">info@funworksmedia.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 FunWorks Media Consulting | <a href="mailto:info@funworksmedia.com">info@funworksmedia.com</a></p>
+  </footer>
+
+  <!-- Scroll-to-Top Button -->
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
+
+  <!-- Scripts -->
+  <script defer src="../scripts/main.js"></script>
+  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    // Basic Form Validation
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+      const status = document.getElementById("formStatus");
+
+      if (!name || !email || !service || !message) {
+        status.textContent = "Please fill out all required fields.";
+        status.style.color = "red";
+        return;
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        status.textContent = "Please enter a valid email address.";
+        status.style.color = "red";
+        return;
+      }
+
+      // Success
+      status.textContent = "Thank you! Your message has been sent.";
+      status.style.color = "green";
+
+      // Clear form
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+</body>
+</html>
