@@ -1,25 +1,26 @@
 :root {
-  /* TDM-inspired color palette */
-  --fun-primary: #0CC6CF;      /* TDM teal */
-  --fun-secondary: #19B264;    /* TDM green */
-  --fun-accent: #1E73BE;       /* TDM blue */
-  --fun-dark: #1A1A1A;         /* Dark text */
-  --fun-light: #F8F9FA;        /* Light background */
+  /* Original FunWorks color palette */
+  --fun-yellow: #FEC601;
+  --fun-red: #E52C27;
+  --fun-cyan: #0DBEDC;
+  --fun-purple: #5D3A9B;
   --fun-white: #FFFFFF;
-  --fun-gray: #6C757D;
-  --fun-light-gray: #E9ECEF;
+  --fun-black: #000000;
+  --fun-dark: #1a1a1a;
+  --fun-gray: #f8f9fa;
+  --fun-light-gray: #e9ecef;
   
   /* Modern shadows */
-  --shadow-sm: 0 2px 8px rgba(12, 198, 207, 0.1);
-  --shadow-md: 0 4px 20px rgba(12, 198, 207, 0.15);
-  --shadow-lg: 0 8px 30px rgba(12, 198, 207, 0.2);
-  --shadow-xl: 0 20px 40px rgba(12, 198, 207, 0.25);
+  --shadow-sm: 0 2px 8px rgba(93, 58, 155, 0.1);
+  --shadow-md: 0 4px 20px rgba(93, 58, 155, 0.15);
+  --shadow-lg: 0 8px 30px rgba(93, 58, 155, 0.2);
+  --shadow-xl: 0 20px 40px rgba(93, 58, 155, 0.25);
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
-  --gradient-secondary: linear-gradient(135deg, #1E73BE 0%, #0CC6CF 100%);
-  --gradient-hero: linear-gradient(135deg, #0CC6CF 0%, #19B264 50%, #1E73BE 100%);
-  --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2C3E50 100%);
+  --gradient-primary: linear-gradient(135deg, #5D3A9B 0%, #9b5de5 100%);
+  --gradient-secondary: linear-gradient(135deg, #FEC601 0%, #ffd700 100%);
+  --gradient-hero: linear-gradient(135deg, #5D3A9B 0%, #9b5de5 50%, #FEC601 100%);
+  --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2C3E50 100%);
   
   /* Typography */
   --heading-font: 'Montserrat', 'Fredoka', sans-serif;
@@ -124,12 +125,12 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: rgba(26, 26, 26, 0.95);
+  background: rgba(34, 34, 34, 0.95);
   color: white;
   padding: 15px 30px;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
-  border-bottom: 1px solid rgba(12, 198, 207, 0.2);
+  border-bottom: 1px solid rgba(93, 58, 155, 0.2);
 }
 
 header img {
@@ -162,7 +163,7 @@ header p {
 
 nav {
   top: 70px;
-  background: rgba(12, 198, 207, 0.95);
+  background: rgba(93, 58, 155, 0.95);
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
 }
@@ -237,8 +238,8 @@ section {
 /* === Modern Button Style === */
 .button-fun {
   display: inline-block;
-  background: var(--gradient-primary);
-  color: var(--fun-white);
+  background: var(--gradient-secondary);
+  color: var(--fun-black);
   padding: 18px 36px;
   border: none;
   border-radius: 50px;
@@ -273,7 +274,7 @@ section {
 
 .button-fun:hover,
 .button-fun:focus {
-  background: var(--gradient-secondary);
+  background: var(--gradient-primary);
   color: var(--fun-white);
   outline: none;
   transform: translateY(-3px);
@@ -319,7 +320,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(12, 198, 207, 0.9) 0%, rgba(25, 178, 100, 0.8) 50%, rgba(30, 115, 190, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(93, 58, 155, 0.9) 0%, rgba(155, 93, 229, 0.8) 50%, rgba(254, 198, 1, 0.7) 100%);
   z-index: -1;
 }
 
@@ -400,7 +401,7 @@ section {
 }
 
 .service-card h3 {
-  color: var(--fun-primary);
+  color: var(--fun-purple);
   margin-bottom: 12px;
   font-size: 1.2rem;
   transition: color 0.3s ease;
@@ -409,11 +410,11 @@ section {
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--fun-primary);
+  border-color: var(--fun-purple);
 }
 
 .service-card:hover h3 {
-  color: var(--fun-secondary);
+  color: var(--fun-red);
 }
 
 .service-description {
@@ -431,7 +432,7 @@ section {
   opacity: 0;
   transition: all 0.3s ease;
   font-weight: 600;
-  color: var(--fun-primary);
+  color: var(--fun-purple);
   margin-top: 15px;
   display: block;
   font-size: 0.9rem;
@@ -522,19 +523,19 @@ section {
 }
 
 .ethos-card:nth-child(1)::before {
-  background: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
+  background: linear-gradient(135deg, #f9c74f 0%, #f8961e 100%);
 }
 .ethos-card:nth-child(2)::before {
-  background: linear-gradient(135deg, #19B264 0%, #1E73BE 100%);
+  background: linear-gradient(135deg, #90be6d 0%, #43aa8b 100%);
 }
 .ethos-card:nth-child(3)::before {
-  background: linear-gradient(135deg, #1E73BE 0%, #0CC6CF 100%);
+  background: linear-gradient(135deg, #577590 0%, #277da1 100%);
 }
 .ethos-card:nth-child(4)::before {
-  background: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
+  background: linear-gradient(135deg, #f94144 0%, #e63946 100%);
 }
 .ethos-card:nth-child(5)::before {
-  background: linear-gradient(135deg, #19B264 0%, #1E73BE 100%);
+  background: linear-gradient(135deg, #9b5de5 0%, #f15bb5 100%);
 }
 
 .ethos-card i {
@@ -624,7 +625,7 @@ section {
   top: -10px;
   left: 20px;
   font-size: 4rem;
-  color: var(--fun-primary);
+  color: var(--fun-purple);
   opacity: 0.2;
   font-family: serif;
 }
@@ -632,7 +633,7 @@ section {
 .testimonial-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--fun-primary);
+  border-color: var(--fun-purple);
 }
 
 .testimonial-card p {
@@ -647,7 +648,7 @@ section {
 
 .testimonial-card strong {
   font-weight: 700;
-  color: var(--fun-primary);
+  color: var(--fun-purple);
   font-size: 0.95rem;
 }
 
@@ -693,8 +694,8 @@ section {
 #contactForm textarea:focus,
 #contactForm select:focus {
   outline: none;
-  border-color: var(--fun-primary);
-  box-shadow: 0 0 0 3px rgba(12, 198, 207, 0.1);
+  border-color: var(--fun-purple);
+  box-shadow: 0 0 0 3px rgba(93, 58, 155, 0.1);
   transform: translateY(-2px);
 }
 
@@ -746,7 +747,7 @@ section {
 
 .contact-info i {
   margin-right: 10px;
-  color: var(--fun-primary);
+  color: var(--fun-purple);
   font-size: 1.2rem;
 }
 
@@ -771,12 +772,12 @@ footer::before {
 }
 
 footer a {
-  color: var(--fun-primary);
+  color: var(--fun-yellow);
   transition: color 0.3s ease;
 }
 
 footer a:hover {
-  color: var(--fun-secondary);
+  color: var(--fun-cyan);
 }
 
 /* === Enhanced Scroll-to-Top Button === */
