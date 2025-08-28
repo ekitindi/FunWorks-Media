@@ -337,9 +337,10 @@ section {
 /* === Enhanced Service Cards === */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-top: 40px;
+  max-width: 100%;
 }
 
 .service-card {
@@ -347,7 +348,7 @@ section {
   background: var(--fun-white);
   border: none;
   border-radius: 20px;
-  padding: 30px;
+  padding: 25px;
   box-shadow: var(--shadow-sm);
   transition: all 0.4s ease;
   color: inherit;
@@ -375,8 +376,8 @@ section {
 
 .service-card h3 {
   color: var(--fun-purple);
-  margin-bottom: 15px;
-  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
@@ -801,6 +802,13 @@ footer a:hover {
 }
 
 /* === Responsive Design === */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     padding: 10px 15px;
@@ -864,12 +872,12 @@ footer a:hover {
   }
   
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
   .service-card {
-    padding: 25px;
+    padding: 20px;
   }
   
   .ethos-wrapper {
@@ -940,6 +948,11 @@ footer a:hover {
   
   h2 {
     font-size: 1.8rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
   
   .service-card {
