@@ -10,6 +10,14 @@
   --fun-gray: #f8f9fa;
   --fun-light-gray: #e9ecef;
   
+  /* Enhanced background colors for better contrast */
+  --bg-light: #fafafa;
+  --bg-section: #f5f5f5;
+  --bg-card: #ffffff;
+  --text-dark: #2c2c2c;
+  --text-medium: #555555;
+  --text-light: #777777;
+  
   /* Modern shadows */
   --shadow-sm: 0 2px 8px rgba(93, 58, 155, 0.1);
   --shadow-md: 0 4px 20px rgba(93, 58, 155, 0.15);
@@ -46,8 +54,8 @@ body {
 
 body {
   font-family: var(--body-font);
-  background-color: var(--fun-white);
-  color: var(--fun-dark);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   line-height: 1.7;
   display: flex;
   flex-direction: column;
@@ -79,10 +87,7 @@ h1 {
 
 h2 {
   font-size: clamp(2rem, 4vw, 3rem);
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--fun-purple);
   text-align: center;
   margin-bottom: 2rem;
   position: relative;
@@ -108,7 +113,7 @@ p {
   font-family: var(--body-font);
   font-size: 1.1rem;
   margin-bottom: 1rem;
-  color: var(--fun-gray);
+  color: var(--text-medium);
 }
 
 /* === Modern Header & Navigation === */
@@ -227,12 +232,21 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  background-color: var(--bg-light);
 }
 
 /* === Sections === */
 section {
   margin-bottom: 80px;
   padding: 40px 0;
+}
+
+section:nth-child(even) {
+  background-color: var(--bg-section);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* === Modern Button Style === */
@@ -371,7 +385,7 @@ section {
 
 .service-card {
   display: block;
-  background: var(--fun-white);
+  background: var(--bg-card);
   border: none;
   border-radius: 20px;
   padding: 25px;
@@ -425,7 +439,7 @@ section {
   margin-top: 15px;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--fun-gray);
+  color: var(--text-medium);
 }
 
 .card-link {
@@ -607,7 +621,7 @@ section {
 }
 
 .testimonial-card {
-  background: var(--fun-white);
+  background: var(--bg-card);
   border-radius: 20px;
   padding: 30px;
   width: 350px;
@@ -641,7 +655,7 @@ section {
   margin-bottom: 20px;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--fun-gray);
+  color: var(--text-medium);
   position: relative;
   z-index: 1;
 }
@@ -659,7 +673,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: var(--fun-white);
+  background: var(--bg-card);
   padding: 40px;
   border-radius: 20px;
   box-shadow: var(--shadow-md);
@@ -687,7 +701,7 @@ section {
   width: 100%;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  background: var(--fun-white);
+  background: var(--bg-card);
 }
 
 #contactForm input:focus,
@@ -734,7 +748,7 @@ section {
   max-width: 700px;
   margin: 50px auto 0;
   text-align: center;
-  background: var(--fun-light);
+  background: var(--bg-card);
   padding: 40px;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
