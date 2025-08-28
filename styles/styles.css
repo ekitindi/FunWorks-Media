@@ -1,26 +1,29 @@
 :root {
-  --fun-yellow: #FEC601;
-  --fun-red: #E52C27;
-  --fun-cyan: #0DBEDC;
-  --fun-purple: #5D3A9B;
+  /* TDM-inspired color palette */
+  --fun-primary: #0CC6CF;      /* TDM teal */
+  --fun-secondary: #19B264;    /* TDM green */
+  --fun-accent: #1E73BE;       /* TDM blue */
+  --fun-dark: #1A1A1A;         /* Dark text */
+  --fun-light: #F8F9FA;        /* Light background */
   --fun-white: #FFFFFF;
-  --fun-black: #000000;
-  --fun-dark: #1a1a1a;
-  --fun-gray: #f8f9fa;
-  --fun-light-gray: #e9ecef;
-  --heading-font: 'Fredoka', sans-serif;
-  --body-font: 'Fredoka', sans-serif;
+  --fun-gray: #6C757D;
+  --fun-light-gray: #E9ECEF;
   
   /* Modern shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 8px rgba(12, 198, 207, 0.1);
+  --shadow-md: 0 4px 20px rgba(12, 198, 207, 0.15);
+  --shadow-lg: 0 8px 30px rgba(12, 198, 207, 0.2);
+  --shadow-xl: 0 20px 40px rgba(12, 198, 207, 0.25);
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #5D3A9B 0%, #9b5de5 100%);
-  --gradient-secondary: linear-gradient(135deg, #FEC601 0%, #ffd700 100%);
-  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-primary: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
+  --gradient-secondary: linear-gradient(135deg, #1E73BE 0%, #0CC6CF 100%);
+  --gradient-hero: linear-gradient(135deg, #0CC6CF 0%, #19B264 50%, #1E73BE 100%);
+  --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2C3E50 100%);
+  
+  /* Typography */
+  --heading-font: 'Montserrat', 'Fredoka', sans-serif;
+  --body-font: 'Montserrat', 'Fredoka', sans-serif;
 }
 
 /* === Reset & Base Styles === */
@@ -81,6 +84,19 @@ h2 {
   background-clip: text;
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
 }
 
 h3 {
@@ -91,6 +107,7 @@ p {
   font-family: var(--body-font);
   font-size: 1.1rem;
   margin-bottom: 1rem;
+  color: var(--fun-gray);
 }
 
 /* === Modern Header & Navigation === */
@@ -98,8 +115,8 @@ header, nav {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 header {
@@ -107,11 +124,12 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: rgba(34, 34, 34, 0.95);
+  background: rgba(26, 26, 26, 0.95);
   color: white;
   padding: 15px 30px;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
+  border-bottom: 1px solid rgba(12, 198, 207, 0.2);
 }
 
 header img {
@@ -119,6 +137,7 @@ header img {
   width: auto;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  filter: brightness(1.1);
 }
 
 header img:hover {
@@ -128,7 +147,7 @@ header img:hover {
 header h1 {
   font-size: 1.8rem;
   margin: 0;
-  background: var(--gradient-secondary);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -138,11 +157,12 @@ header p {
   font-size: 0.9rem;
   opacity: 0.9;
   margin: 0;
+  color: var(--fun-light);
 }
 
 nav {
   top: 70px;
-  background: rgba(93, 58, 155, 0.95);
+  background: rgba(12, 198, 207, 0.95);
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
 }
@@ -180,7 +200,7 @@ nav ul li a::after {
   left: 50%;
   width: 0;
   height: 3px;
-  background: var(--fun-yellow);
+  background: var(--fun-white);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -217,8 +237,8 @@ section {
 /* === Modern Button Style === */
 .button-fun {
   display: inline-block;
-  background: var(--gradient-secondary);
-  color: var(--fun-black);
+  background: var(--gradient-primary);
+  color: var(--fun-white);
   padding: 18px 36px;
   border: none;
   border-radius: 50px;
@@ -253,7 +273,7 @@ section {
 
 .button-fun:hover,
 .button-fun:focus {
-  background: var(--gradient-primary);
+  background: var(--gradient-secondary);
   color: var(--fun-white);
   outline: none;
   transform: translateY(-3px);
@@ -288,7 +308,7 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.15;
+  opacity: 0.1;
   z-index: -1;
 }
 
@@ -299,7 +319,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(93, 58, 155, 0.8) 0%, rgba(155, 93, 229, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(12, 198, 207, 0.9) 0%, rgba(25, 178, 100, 0.8) 50%, rgba(30, 115, 190, 0.7) 100%);
   z-index: -1;
 }
 
@@ -314,6 +334,10 @@ section {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #FFFFFF, #E8F4FD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-content p {
@@ -321,6 +345,7 @@ section {
   margin-bottom: 2rem;
   opacity: 0.95;
   line-height: 1.6;
+  color: var(--fun-light);
 }
 
 @keyframes fadeInUp {
@@ -375,7 +400,7 @@ section {
 }
 
 .service-card h3 {
-  color: var(--fun-purple);
+  color: var(--fun-primary);
   margin-bottom: 12px;
   font-size: 1.2rem;
   transition: color 0.3s ease;
@@ -384,11 +409,11 @@ section {
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--fun-purple);
+  border-color: var(--fun-primary);
 }
 
 .service-card:hover h3 {
-  color: var(--fun-red);
+  color: var(--fun-secondary);
 }
 
 .service-description {
@@ -399,14 +424,14 @@ section {
   margin-top: 15px;
   font-weight: 400;
   line-height: 1.6;
-  color: #666;
+  color: var(--fun-gray);
 }
 
 .card-link {
   opacity: 0;
   transition: all 0.3s ease;
   font-weight: 600;
-  color: var(--fun-purple);
+  color: var(--fun-primary);
   margin-top: 15px;
   display: block;
   font-size: 0.9rem;
@@ -497,19 +522,19 @@ section {
 }
 
 .ethos-card:nth-child(1)::before {
-  background: linear-gradient(135deg, #f9c74f 0%, #f8961e 100%);
+  background: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
 }
 .ethos-card:nth-child(2)::before {
-  background: linear-gradient(135deg, #90be6d 0%, #43aa8b 100%);
+  background: linear-gradient(135deg, #19B264 0%, #1E73BE 100%);
 }
 .ethos-card:nth-child(3)::before {
-  background: linear-gradient(135deg, #577590 0%, #277da1 100%);
+  background: linear-gradient(135deg, #1E73BE 0%, #0CC6CF 100%);
 }
 .ethos-card:nth-child(4)::before {
-  background: linear-gradient(135deg, #f94144 0%, #e63946 100%);
+  background: linear-gradient(135deg, #0CC6CF 0%, #19B264 100%);
 }
 .ethos-card:nth-child(5)::before {
-  background: linear-gradient(135deg, #9b5de5 0%, #f15bb5 100%);
+  background: linear-gradient(135deg, #19B264 0%, #1E73BE 100%);
 }
 
 .ethos-card i {
@@ -599,7 +624,7 @@ section {
   top: -10px;
   left: 20px;
   font-size: 4rem;
-  color: var(--fun-purple);
+  color: var(--fun-primary);
   opacity: 0.2;
   font-family: serif;
 }
@@ -607,7 +632,7 @@ section {
 .testimonial-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--fun-purple);
+  border-color: var(--fun-primary);
 }
 
 .testimonial-card p {
@@ -615,14 +640,14 @@ section {
   margin-bottom: 20px;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: var(--fun-gray);
   position: relative;
   z-index: 1;
 }
 
 .testimonial-card strong {
   font-weight: 700;
-  color: var(--fun-purple);
+  color: var(--fun-primary);
   font-size: 0.95rem;
 }
 
@@ -668,8 +693,8 @@ section {
 #contactForm textarea:focus,
 #contactForm select:focus {
   outline: none;
-  border-color: var(--fun-purple);
-  box-shadow: 0 0 0 3px rgba(93, 58, 155, 0.1);
+  border-color: var(--fun-primary);
+  box-shadow: 0 0 0 3px rgba(12, 198, 207, 0.1);
   transform: translateY(-2px);
 }
 
@@ -708,7 +733,7 @@ section {
   max-width: 700px;
   margin: 50px auto 0;
   text-align: center;
-  background: var(--fun-gray);
+  background: var(--fun-light);
   padding: 40px;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
@@ -721,7 +746,7 @@ section {
 
 .contact-info i {
   margin-right: 10px;
-  color: var(--fun-purple);
+  color: var(--fun-primary);
   font-size: 1.2rem;
 }
 
@@ -746,12 +771,12 @@ footer::before {
 }
 
 footer a {
-  color: var(--fun-yellow);
+  color: var(--fun-primary);
   transition: color 0.3s ease;
 }
 
 footer a:hover {
-  color: var(--fun-cyan);
+  color: var(--fun-secondary);
 }
 
 /* === Enhanced Scroll-to-Top Button === */
