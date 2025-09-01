@@ -3,28 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - FunWorks</title>
-  <meta name="description" content="Get in touch with FunWorks Media Consulting for expert sales, marketing and branding support." />
+  <title>Book Consultation - FunWorks</title>
+  <meta name="description" content="Book your free consultation with FunWorks Media Consulting" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka :wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css " />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles/styles.css" />
+  
+  <!-- Calendar Styles -->
+  <style>
+    .booking-section {
+      background: var(--bg-section);
+      padding: 40px 0;
+      margin: 40px -20px;
+    }
+    
+    .calendar-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .calendar-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .calendar-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .calendar-nav button {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .calendar-nav button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .calendar-day-header {
+      text-align: center;
+      font-weight: 600;
+      color: var(--fun-purple);
+      padding: 10px;
+      background: var(--bg-light);
+      border-radius: 8px;
+    }
+    
+    .calendar-day {
+      text-align: center;
+      padding: 15px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .calendar-day:hover {
+      background: var(--bg-light);
+      border-color: var(--fun-purple);
+    }
+    
+    .calendar-day.available {
+      background: rgba(93, 58, 155, 0.1);
+      color: var(--fun-purple);
+      font-weight: 600;
+    }
+    
+    .calendar-day.selected {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: var(--fun-purple);
+    }
+    
+    .calendar-day.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .time-slot {
+      padding: 12px;
+      text-align: center;
+      background: var(--bg-light);
+      border: 2px solid var(--fun-light-gray);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .time-slot:hover {
+      border-color: var(--fun-purple);
+      background: rgba(93, 58, 155, 0.1);
+    }
+    
+    .time-slot.selected {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: var(--fun-purple);
+    }
+    
+    .time-slot.booked {
+      background: #f8d7da;
+      color: #721c24;
+      border-color: #f5c6cb;
+      cursor: not-allowed;
+    }
+    
+    .booking-form {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid var(--fun-light-gray);
+    }
+    
+    .booking-summary {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .booking-summary h4 {
+      color: var(--fun-purple);
+      margin-bottom: 15px;
+    }
+    
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding: 5px 0;
+    }
+    
+    .summary-label {
+      font-weight: 600;
+      color: var(--text-medium);
+    }
+    
+    .summary-value {
+      color: var(--fun-purple);
+      font-weight: 500;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      display: none;
+    }
+    
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .calendar-grid {
+        gap: 3px;
+      }
+      
+      .calendar-day {
+        padding: 10px 5px;
+        font-size: 0.9rem;
+      }
+      
+      .time-slots {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <img src="images/Funworks.jpeg" alt="FunWorks Media Consulting Logo" />
     <h1>FunWorks</h1>
-    <p>Your Brand’s New Best Friend</p>
+    <p>Your Brand's New Best Friend</p>
   </header>
 
   <!-- Navigation -->
@@ -44,52 +251,120 @@
     <!-- Hero Section -->
     <section class="hero" data-aos="fade-up">
       <div class="hero-content">
-        <h1>Contact Us</h1>
-        <p>Ready to grow your brand? Get in touch today!</p>
+        <h1>Book Your Consultation</h1>
+        <p>Ready to grow your brand? Schedule a free consultation at your convenience!</p>
       </div>
     </section>
 
-    <!-- Contact Form Section -->
+    <!-- Booking Calendar Section -->
+    <section class="booking-section" data-aos="fade-up">
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <h2>Select Your Preferred Time</h2>
+          <p>Choose a date and time that works best for you. Available slots are Monday to Friday, 10:00 AM - 4:00 PM.</p>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div id="successMessage" class="success-message">
+          <i class="fas fa-check-circle"></i> Booking successful! You will receive a confirmation email shortly.
+        </div>
+        <div id="errorMessage" class="error-message">
+          <i class="fas fa-exclamation-circle"></i> There was an error booking your appointment. Please try again.
+        </div>
+
+        <div class="calendar-nav">
+          <button id="prevMonth"><i class="fas fa-chevron-left"></i> Previous</button>
+          <h3 id="currentMonth">January 2025</h3>
+          <button id="nextMonth">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div class="calendar-grid" id="calendarGrid">
+          <!-- Calendar will be generated by JavaScript -->
+        </div>
+
+        <div id="timeSlots" class="time-slots" style="display: none;">
+          <h4>Available Time Slots:</h4>
+          <div class="time-slot" data-time="10:00">10:00 AM</div>
+          <div class="time-slot" data-time="11:00">11:00 AM</div>
+          <div class="time-slot" data-time="12:00">12:00 PM</div>
+          <div class="time-slot" data-time="13:00">1:00 PM</div>
+          <div class="time-slot" data-time="14:00">2:00 PM</div>
+          <div class="time-slot" data-time="15:00">3:00 PM</div>
+          <div class="time-slot" data-time="16:00">4:00 PM</div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form" id="bookingForm" style="display: none;">
+          <div class="booking-summary">
+            <h4>Booking Summary</h4>
+            <div class="summary-item">
+              <span class="summary-label">Selected Date:</span>
+              <span class="summary-value" id="summaryDate">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Selected Time:</span>
+              <span class="summary-value" id="summaryTime">-</span>
+            </div>
+          </div>
+
+          <form id="appointmentForm">
+            <div class="form-row">
+              <div>
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+              </div>
+              <div>
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" required>
+              </div>
+              <div>
+                <label for="service">Service Required *</label>
+                <select id="service" name="service" required>
+                  <option value="">-- Select a Service --</option>
+                  <option value="Digital Marketing">Digital Marketing</option>
+                  <option value="Media Buying">Media Buying</option>
+                  <option value="Web Design">Web Design</option>
+                  <option value="PR & Media Relations">PR & Media Relations</option>
+                  <option value="Brand Strategy">Brand Strategy</option>
+                  <option value="Event Management">Event Management</option>
+                  <option value="Sales & Distribution">Sales & Distribution</option>
+                  <option value="BTL Marketing">BTL Marketing</option>
+                  <option value="General Consultation">General Consultation</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Additional Information</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us about your project or any specific questions you have..."></textarea>
+            </div>
+
+            <button type="submit" class="button-fun">
+              <i class="fas fa-calendar-check"></i> Book Appointment
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info Section -->
     <section id="contact-details" data-aos="fade-up">
-      <h2>Send Us a Message</h2>
-      <p>We’d love to hear from you — whether you're looking for help with one of our services or just want to say hello.</p>
+      <h2>Other Ways to Reach Us</h2>
+      <p>Prefer to call or email directly? We're here to help!</p>
 
-      <form id="contactForm" novalidate>
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required>
-
-        <label for="email">Your Email *</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
-
-        <label for="phone">Phone Number (Optional)</label>
-        <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" pattern="^\+?[0-9\s\-()]{7,}$" />
-
-        <label for="service">Service Required *</label>
-        <select id="service" name="service" required>
-          <option value="">-- Select a Service --</option>
-          <option value="Digital Marketing">Digital Marketing</option>
-          <option value="Media Buying">Media Buying</option>
-          <option value="Web Design">Web Design</option>
-          <option value="PR & Media Relations">PR & Media Relations</option>
-          <option value="Brand Strategy">Brand Strategy</option>
-          <option value="Event Management">Event Management</option>
-          <option value="Sales & Distribution">Sales & Distribution</option>
-          <option value="BTL Marketing">BTL Marketing</option>
-          <option value="General Enquiry">General Enquiry</option>
-        </select>
-
-        <label for="message">Your Message *</label>
-        <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea>
-
-        <button type="submit" class="button-fun">Send Message</button>
-        <p id="formStatus" class="form-status"></p>
-      </form>
-
-      <!-- Contact Info -->
       <div class="contact-info">
-        <h3>Prefer to call us?</h3>
+        <h3>Get in Touch</h3>
         <p><i class="fas fa-phone-alt"></i> <a href="tel:+254123456789">+254 123 456 789</a></p>
         <p><i class="fas fa-envelope"></i> <a href="mailto:info@funworksmedia.com">info@funworksmedia.com</a></p>
+        <p><i class="fas fa-clock"></i> Monday - Friday: 10:00 AM - 4:00 PM</p>
+        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
       </div>
     </section>
   </main>
@@ -103,42 +378,17 @@
   <button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
 
   <!-- Scripts -->
-  <script defer src="../scripts/main.js"></script>
-  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+  <script defer src="scripts/main.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <!-- Booking System -->
+  <script src="scripts/booking-system.js"></script>
+  
   <script>
     AOS.init({ duration: 1000 });
-
-    // Basic Form Validation
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const service = document.getElementById("service").value;
-      const message = document.getElementById("message").value.trim();
-      const status = document.getElementById("formStatus");
-
-      if (!name || !email || !service || !message) {
-        status.textContent = "Please fill out all required fields.";
-        status.style.color = "red";
-        return;
-      }
-
-      // Validate email format
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        status.textContent = "Please enter a valid email address.";
-        status.style.color = "red";
-        return;
-      }
-
-      // Success
-      status.textContent = "Thank you! Your message has been sent.";
-      status.style.color = "green";
-
-      // Clear form
-      document.getElementById("contactForm").reset();
-    });
   </script>
 </body>
 </html>
