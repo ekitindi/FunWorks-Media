@@ -4,7 +4,7 @@
 class GoogleCalendarIntegration {
   constructor() {
     this.calendarId = 'primary'; // or your specific calendar ID
-    this.apiKey = 'YOUR_GOOGLE_API_KEY'; // Replace with your actual API key
+    this.apiKey = 'AIzaSyA6gxwtCUBAE0ox7Zzu9SoSmGPLvsI9E9w'; // Replace with your actual API key
     this.baseUrl = 'https://www.googleapis.com/calendar/v3';
   }
 
