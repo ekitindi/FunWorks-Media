@@ -1,10 +1,10 @@
 // EmailJS Configuration
 // Replace these with your actual EmailJS credentials
 const EMAILJS_CONFIG = {
-  PUBLIC_KEY: 'YOUR_PUBLIC_KEY_HERE', // Replace with your EmailJS public key
-  SERVICE_ID: 'YOUR_SERVICE_ID_HERE', // Replace with your EmailJS service ID
-  TEMPLATE_ID: 'YOUR_TEMPLATE_ID_HERE', // Replace with your EmailJS template ID
-  CALENDAR_TEMPLATE_ID: 'YOUR_CALENDAR_TEMPLATE_ID_HERE' // Separate template for calendar invites
+  PUBLIC_KEY: 'BuaVL8Fc5jtxfZrdY', // Replace with your EmailJS public key
+  SERVICE_ID: 'service_xc1ug1n', // Replace with your EmailJS service ID
+  TEMPLATE_ID: 'template_dyuxwlo', // Replace with your EmailJS template ID
+  CALENDAR_TEMPLATE_ID: 'template_vbfro99' // Separate template for calendar invites
 };
 
 // Initialize EmailJS
