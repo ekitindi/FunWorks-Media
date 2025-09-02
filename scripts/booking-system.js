@@ -927,3 +927,38 @@ END:VCALENDAR`;
 document.addEventListener('DOMContentLoaded', () => {
   new BookingCalendar();
 });
+// Add this to your booking-system.js file
+class GoogleCalendarIntegration {
+  constructor() {
+    this.calendarId = 'primary'; // or your specific calendar ID
+    this.apiKey = 'YOUR_GOOGLE_API_KEY';
+  }
+
+  async fetchAvailability(startDate, endDate) {
+    const response = await fetch(
+      `https://www.googleapis.com/calendar/v3/calendars/${this.calendarId}/events?` +
+      `timeMin=${startDate}T00:00:00Z&timeMax=${endDate}T23:59:59Z&` +
+      `key=${this.apiKey}`
+    );
+    
+    const data = await response.json();
+    return this.processEvents(data.items);
+  }
+
+  processEvents(events) {
+    const bookedSlots = new Map();
+    
+    events.forEach(event => {
+      const start = new Date(event.start.dateTime || event.start.date);
+      const dateString = start.toISOString().split('T')[0];
+      const timeString = start.toTimeString().substring(0, 5);
+      
+      if (!bookedSlots.has(dateString)) {
+        bookedSlots.set(dateString, new Set());
+      }
+      bookedSlots.get(dateString).add(timeString);
+    });
+    
+    return bookedSlots;
+  }
+}
